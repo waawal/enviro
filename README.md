@@ -1,0 +1,4 @@
+magicenv
+========
+
+Environment friendly configuration
