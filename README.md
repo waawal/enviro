@@ -1,4 +1,4 @@
-magicenv
-========
+friendlyenv
+===========
 
 Environment friendly configuration
