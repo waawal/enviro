@@ -13,7 +13,7 @@ class ConfigFileWrapper(object):
         self.fp = open(filename)
         self.section = '[default-section]\n'
 
-   def readline(self):
+    def readline(self):
         if self.section:
             try:
                 return self.section
