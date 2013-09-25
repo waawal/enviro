@@ -3,10 +3,10 @@ from __future__ import generators
 import os
 try:
     import ConfigParser as configparser
-    PY2 = True
+    PY3 = False
 except ImportError:
     import configparser
-    PY2 = False
+    PY3 = True
 
 
 class ConfigFileWrapper(object):
@@ -25,13 +25,15 @@ class ConfigFileWrapper(object):
             return self.fp.readline()
 
     def __iter__(self):
-        for line in self.readline:
+        for line in self.readline():
             yield line
 
 class Env(object):
 
     def __init__(self, filename):
         self.filename = filename
+        self.find_file()
+        self.parse_file()
 
     def find_file(self):
         locations = (os.curdir, os.path.expanduser("~"), "/etc")
@@ -49,9 +51,8 @@ class Env(object):
 
     def parse_file(self):
         config = configparser.ConfigParser()
-        if PY2:
+        if not PY3:
             config.readfp(self.file, self.filename)
         else:
             config.read_file(self.file, self.filename)
-
         self.config = dict(config)
