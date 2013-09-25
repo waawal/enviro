@@ -1,11 +1,13 @@
 from __future__ import generators
 
+import os
 try:
     import ConfigParser as configparser
     PY2 = True
 except ImportError:
     import configparser
     PY2 = False
+
 
 class ConfigFileWrapper(object):
 
@@ -32,8 +34,18 @@ class Env(object):
         self.filename = filename
 
     def find_file(self):
-        self.filename
-        self.file = ConfigFileWrapper(self.filename)
+        locations = (os.curdir, os.path.expanduser("~"), "/etc")
+        for location in locations:
+            try:
+                file_candidate = os.path.join(location, self.filename)
+                if os.access(file_candidate), os.R_OK):
+                    self.found_file = file_candidate
+                    self.file = ConfigFileWrapper(self.found_file)
+                    break
+            except IOError:
+                continue
+        else:
+            raise ValueError # Should raise other exception
 
     def parse_file(self):
         config = configparser.ConfigParser()
