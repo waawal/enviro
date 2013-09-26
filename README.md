@@ -1,4 +1,4 @@
-friendenv
-=========
+enviro
+======
 
 Environment friendly configuration
