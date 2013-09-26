@@ -47,12 +47,15 @@ class Env(object):
             except IOError:
                 continue
         else:
-            raise ValueError # Should raise other exception
+            self.file = None
 
     def parse_file(self):
-        config = configparser.ConfigParser()
-        if not PY3:
-            config.readfp(self.file, self.filename)
+        if self.file is None:
+            self.config = {}
         else:
-            config.read_file(self.file, self.filename)
-        self.config = dict(config)
+            config = configparser.ConfigParser()
+            if not PY3:
+                config.readfp(self.file, self.filename)
+            else:
+                config.read_file(self.file, self.filename)
+            self.config = dict(config)
