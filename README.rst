@@ -8,7 +8,7 @@ enviro
 
 *Environmentally Friendly Configuration*
 
-`enviro` lets you and your users set default values of `os.environ` from a file.
+`enviro` lets you and your users set default values of ``os.environ`` from a file.
 
 Usage
 -----
@@ -21,12 +21,12 @@ Populating your Default Environment
     from enviro import environment
     environment('mysettings.conf')
 
-`enviro` will now look in the following directories for a file called `mysettings.conf`:
+`enviro` will now look in the following directories for a file called ``mysettings.conf``:
 
-1. Current Working Directory
-2. `$HOME`
-3. `/etc`
-4. The path of the executed script.
+1. Current Working Directory ``cwd``
+2. Home directory ``$HOME``
+3. ``/etc``
+4. The path of the executed script. ``__file__``
 
 .. code:: python
 
@@ -37,12 +37,12 @@ Populating your Default Environment
     os.environ.get('foodir')
     # Will get you 'frob/whatever' based on the example config below.
 
-If `foodir` was already defined in the environment, enviro would not have overwritten it.
+If ``foodir`` was already defined in the environment, `enviro` would not have overwritten it.
 
 Configuration File Format
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The configuration file is a normal .ini file *without section headers*. It supports interpolation as you expect.
+The configuration file is a normal ``.ini`` file *without section headers*. It supports interpolation as you expect.
 
 ::
 
