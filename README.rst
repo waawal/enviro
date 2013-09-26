@@ -14,7 +14,7 @@ Populating your Default Environment
 .. code:: python
 
     from enviro import setdefault
-    enviro.setdefault('mysettings.conf')
+    setdefault('mysettings.conf')
 
 `enviro` will now look in the following directories for a file called ``mysettings.conf``:
 
