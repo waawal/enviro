@@ -58,7 +58,7 @@ class ConfigFile(object):
                 config.readfp(self.file, self.filename)
             else:
                 config.read_file(self.file, self.filename)
-            self._config = dict(config)
+            self._config = dict(config.items('default-section'))
 
     @property
     def config(self):
