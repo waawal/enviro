@@ -13,8 +13,8 @@ Populating your Default Environment
 
 .. code:: python
 
-    from enviro import environment
-    environment('mysettings.conf')
+    from enviro import setdefault
+    enviro.setdefault('mysettings.conf')
 
 `enviro` will now look in the following directories for a file called ``mysettings.conf``:
 
@@ -30,8 +30,8 @@ Populating your Default Environment
 .. code:: python
 
     import os
-    from enviro import environment
-    environment('mysettings.conf')
+    enviro
+    enviro.setdefault('mysettings.conf')
 
     os.environ['foodir']
     # Will give you 'frob/whatever' based on the example config below.

@@ -75,6 +75,6 @@ class Env(object):
         for key, value in self.environment.items():
             os.environ.setdefault(key, val)
 
-def env(filename):
+def setdefault(filename):
     config_file = ConfigFile(filename)
     environment = Env(config_file.config)
