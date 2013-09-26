@@ -71,7 +71,3 @@ GPL v.2
     :alt: Environment Friendly!
     :align: left
     :target: https://pypi.python.org/pypi/enviro
-
-....
-
-*Environmentally Friendly Configuration*
