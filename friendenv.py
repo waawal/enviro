@@ -39,7 +39,7 @@ class ConfigFile(object):
         for location in self.locations:
             try:
                 file_candidate = os.path.join(location, self.filename)
-                if os.access(file_candidate), os.R_OK):
+                if os.access(file_candidate, os.R_OK):
                     self.found_file = file_candidate
                     self.file = ConfigFileWrapper(self.found_file)
                     break
