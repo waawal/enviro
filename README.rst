@@ -23,11 +23,7 @@ Populating your Default Environment
 3. ``/etc``
 4. The path of the executed script. ``__file__``
 
-....
-
 .. image:: http://i.imgur.com/Bp9pZ4k.jpg
-
-....
 
 .. code:: python
 
