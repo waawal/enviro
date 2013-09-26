@@ -1,0 +1,4 @@
+enviro
+======
+
+Environment friendly configuration
