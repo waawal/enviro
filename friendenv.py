@@ -28,7 +28,7 @@ class ConfigFileWrapper(object):
         for line in self.readline():
             yield line
 
-class Env(object):
+class ConfigFile(object):
 
     def __init__(self, filename):
         self.filename = filename
