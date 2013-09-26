@@ -32,8 +32,6 @@ class ConfigFile(object):
 
     def __init__(self, filename):
         self.filename = filename
-        self.find_file()
-        self.parse_file()
 
     def find_file(self):
         locations = (os.getcwd(), os.path.expanduser("~"), "/etc",
@@ -59,7 +57,13 @@ class ConfigFile(object):
                 config.readfp(self.file, self.filename)
             else:
                 config.read_file(self.file, self.filename)
-            self.config = dict(config)
+            self._config = dict(config)
+
+    @property
+    def config(self):
+        self.find_file()
+        self.parse_file()
+        return self._config
 
 class Env(object):
 
@@ -69,3 +73,7 @@ class Env(object):
     def setdefault(self):
         for key, value in self.environment.items():
             os.environ.setdefault(key, val)
+
+def env(filename):
+    config_file = ConfigFile(filename)
+    environment = Env(config_file.config)
