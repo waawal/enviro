@@ -36,7 +36,8 @@ class ConfigFile(object):
         self.parse_file()
 
     def find_file(self):
-        locations = (os.curdir, os.getcwd(), os.path.expanduser("~"), "/etc")
+        locations = (os.getcwd(), os.path.expanduser("~"), "/etc",
+                     os.path.dirname(os.path.realpath(__file__)))
         for location in locations:
             try:
                 file_candidate = os.path.join(location, self.filename)
@@ -59,3 +60,5 @@ class ConfigFile(object):
             else:
                 config.read_file(self.file, self.filename)
             self.config = dict(config)
+
+class Env
