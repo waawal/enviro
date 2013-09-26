@@ -1,7 +1,7 @@
 enviro
 ======
 
-`enviro` lets you set default values of ``os.environ`` from a configuration file. This can be useful if you need to be able to override parts of your configuration based on the running environment. Using this approach is ideal for when you need your configuration to play nicely with PaaS services.
+*enviro lets you set default values of ``os.environ`` from a configuration file.* This can be useful if you need to be able to override parts of your configuration based on the running environment. Using this approach is ideal for when you need your configuration to play nicely with PaaS services.
 
 ....
 
