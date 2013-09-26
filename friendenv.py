@@ -36,7 +36,7 @@ class Env(object):
         self.parse_file()
 
     def find_file(self):
-        locations = (os.curdir, os.path.expanduser("~"), "/etc")
+        locations = (os.curdir, os.getcwd(), os.path.expanduser("~"), "/etc")
         for location in locations:
             try:
                 file_candidate = os.path.join(location, self.filename)
