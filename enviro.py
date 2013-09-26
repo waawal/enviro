@@ -1,4 +1,5 @@
 from __future__ import generators
+import __main__
 
 import os
 try:
@@ -33,7 +34,7 @@ class ConfigFile(object):
     def __init__(self, filename):
         self.filename = filename
         self.locations = (os.getcwd(), os.path.expanduser("~"), "/etc",
-                          os.path.dirname(os.path.realpath(__file__)))
+                          os.path.dirname(os.path.realpath(__main__.__file__)))
 
     def find_file(self):
         for location in self.locations:
@@ -43,7 +44,7 @@ class ConfigFile(object):
                     self.found_file = file_candidate
                     self.file = ConfigFileWrapper(self.found_file)
                     break
-            except IOError:
+            except (IOError, AttributeError):
                 continue
         else:
             self.file = None
