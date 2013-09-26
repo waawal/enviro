@@ -32,11 +32,11 @@ class ConfigFile(object):
 
     def __init__(self, filename):
         self.filename = filename
+        self.locations = (os.getcwd(), os.path.expanduser("~"), "/etc",
+                          os.path.dirname(os.path.realpath(__file__)))
 
     def find_file(self):
-        locations = (os.getcwd(), os.path.expanduser("~"), "/etc",
-                     os.path.dirname(os.path.realpath(__file__)))
-        for location in locations:
+        for location in self.locations:
             try:
                 file_candidate = os.path.join(location, self.filename)
                 if os.access(file_candidate), os.R_OK):
