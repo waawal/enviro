@@ -8,11 +8,10 @@ enviro
 
 *Environmentally Friendly Configuration*
 
-`enviro` lets you and your users set default values of `os.environ.get` from a file.
+`enviro` lets you and your users set default values of `os.environ` from a file.
 
 Usage
 -----
-
 
 Populating your Default Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -24,10 +23,10 @@ Populating your Default Environment
 
 `enviro` will now look in the following directories for a file called `mysettings.conf`:
 
-1. Current Working Directory `cwd`
+1. Current Working Directory
 2. `$HOME`
 3. `/etc`
-4. The path of the executed script. `__file__`
+4. The path of the executed script.
 
 .. code:: python
 
