@@ -61,4 +61,11 @@ class ConfigFile(object):
                 config.read_file(self.file, self.filename)
             self.config = dict(config)
 
-class Env
+class Env(object):
+
+    def __init__(self, environment):
+        self.environment = environment
+
+    def setdefault(self):
+        for key, value in self.environment.items():
+            os.environ.setdefault(key, val)
