@@ -33,7 +33,7 @@ Populating your Default Environment
     from enviro import environment
     environment('mysettings.conf')
 
-    os.environ.get('foodir')
+    os.environ['foodir']
     # Will give you 'frob/whatever' based on the example config below.
 
 If ``foodir`` was already defined in the environment, `enviro` would not have overwritten it.
