@@ -21,7 +21,7 @@ Populating your Default Environment
 1. Current Working Directory ``cwd``
 2. Home directory ``$HOME``
 3. ``/etc``
-4. The path of the executed script. ``__file__``
+4. The path of the executed script. ``__file__`` of ``__main__``
 
 ....
 
@@ -30,7 +30,7 @@ Populating your Default Environment
 .. code:: python
 
     import os
-    enviro
+    ìmport enviro
     enviro.setdefault('mysettings.conf')
 
     os.environ['foodir']
