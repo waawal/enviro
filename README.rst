@@ -10,8 +10,23 @@ Environmentally Friendly Configuration
 
 `enviro` lets you and your users set default values of os.env from a file.
 
-Example
--------
+Usage
+-----
+
+Configuration File
+~~~~~~~~~~~~~~~~~~
+
+The configuration file is a normal .ini file without section headers. It supports interpolation as you expect.
+
+::
+
+    foodir: %(dir)s/whatever
+    dir=frob
+    long: this value continues
+       in the next line
+
+Populate your environment
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
 
@@ -20,10 +35,10 @@ Example
 
 `enviro` will now look in the following directories for a file called `mysettings.conf`:
 
-1. Current Working Directory (cwd)
-2. $HOME
-3. /etc
-4. The path of the executed script.
+1. Current Working Directory `cwd`
+2. `$HOME`
+3. `/etc`
+4. The path of the executed script. `__file__`
 
 Installation
 ------------
