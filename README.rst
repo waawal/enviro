@@ -1,6 +1,10 @@
 enviro
 ======
 
+`enviro` lets you and your users set default values of ``os.environ`` from a file.
+
+....
+
 .. image:: http://media.giphy.com/media/gBxL0G0DqZd84/giphy.gif
     :alt: Environment Friendly!
     :align: left
@@ -8,7 +12,7 @@ enviro
 
 *Environmentally Friendly Configuration*
 
-`enviro` lets you and your users set default values of ``os.environ`` from a file.
+
 
 Usage
 -----
