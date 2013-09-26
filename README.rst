@@ -30,7 +30,7 @@ Populating your Default Environment
 .. code:: python
 
     import os
-    ìmport enviro
+    import enviro
     enviro.setdefault('mysettings.conf')
 
     os.environ['foodir']
