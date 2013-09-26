@@ -6,27 +6,16 @@ enviro
     :align: left
     :target: https://pypi.python.org/pypi/enviro
 
-**Environmentally Friendly Configuration**
+*Environmentally Friendly Configuration*
 
-`enviro` lets you and your users set default values of os.environ.get from a file.
+`enviro` lets you and your users set default values of `os.environ.get` from a file.
 
 Usage
 -----
 
-Configuration File
-~~~~~~~~~~~~~~~~~~
 
-The configuration file is a normal .ini file *without section headers*. It supports interpolation as you expect.
-
-::
-
-    foodir: %(dir)s/whatever
-    dir=frob
-    long: this value continues
-       in the next line
-
-Populate your environment
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Populating your Default Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
 
@@ -42,14 +31,25 @@ Populate your environment
 
 .. code:: python
 
-    >>>import os
-    >>>from enviro import environment
-    >>>environment('mysettings.conf')
+    import os
+    from enviro import environment
+    environment('mysettings.conf')
 
-    >>>os.environ.get('foodir')
-    'frob/whatever'
+    os.environ.get('foodir') # Will get you 'frob/whatever' based on the example config below.
 
 If `foodir` was already defined in the environment, enviro would not have overwritten it.
+
+Configuration File Format
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The configuration file is a normal .ini file *without section headers*. It supports interpolation as you expect.
+
+::
+
+    foodir: %(dir)s/whatever
+    dir=frob
+    long: this value continues
+       in the next line
 
 Installation
 ------------
