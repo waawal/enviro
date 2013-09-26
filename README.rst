@@ -32,7 +32,11 @@ Populating your Default Environment
 3. ``/etc``
 4. The path of the executed script. ``__file__``
 
+....
+
 .. image:: http://i.imgur.com/Bp9pZ4k.jpg
+
+....
 
 .. code:: python
 
@@ -41,14 +45,14 @@ Populating your Default Environment
     environment('mysettings.conf')
 
     os.environ.get('foodir')
-    # Will get you 'frob/whatever' based on the example config below.
+    # Will give you 'frob/whatever' based on the example config below.
 
 If ``foodir`` was already defined in the environment, `enviro` would not have overwritten it.
 
 Configuration File Format
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The configuration file is a normal ``.ini`` file *without section headers*. It supports interpolation as you expect.
+The configuration file is in normal ``.ini`` format *without section headers*. It supports interpolation as you would expect.
 
 ::
 
