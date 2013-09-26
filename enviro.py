@@ -52,7 +52,7 @@ class ConfigFile(object):
         if self.file is None:
             self.config = {}
         else:
-            config = configparser.ConfigParser()
+            config = configparser.SafeConfigParser()
             if not PY3:
                 config.readfp(self.file, self.filename)
             else:
