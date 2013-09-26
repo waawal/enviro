@@ -5,13 +5,6 @@ enviro
 
 ....
 
-.. image:: http://media.giphy.com/media/gBxL0G0DqZd84/giphy.gif
-    :alt: Environment Friendly!
-    :align: left
-    :target: https://pypi.python.org/pypi/enviro
-
-*Environmentally Friendly Configuration*
-
 Usage
 -----
 
@@ -73,3 +66,12 @@ License
 -------
 
 GPL v.2
+
+...
+
+.. image:: http://media.giphy.com/media/gBxL0G0DqZd84/giphy.gif
+    :alt: Environment Friendly!
+    :align: left
+    :target: https://pypi.python.org/pypi/enviro
+
+*Environmentally Friendly Configuration*
