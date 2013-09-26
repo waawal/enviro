@@ -40,6 +40,15 @@ Populate your environment
 3. `/etc`
 4. The path of the executed script. `__file__`
 
+.. code:: python
+
+    >>> import os
+    >>> from enviro import environment
+    >>> environment('mysettings.conf')
+
+    >>> os.environ.get('foodir')
+    'frob/whatever'
+
 Installation
 ------------
 
