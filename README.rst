@@ -16,11 +16,11 @@ Example
 Installation
 ------------
 
-Install *gramme* with pip:
+Install *enviro* with pip:
 
 ::
 
-    $ pip install gramme
+    $ pip install enviro
 
 
 License
