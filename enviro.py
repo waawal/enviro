@@ -11,6 +11,8 @@ except ImportError:
 
 
 class ConfigFileWrapper(object):
+    """ Since ConfigParser doesn't work with files without sections
+    we have to create a "ghost section". """
 
     def __init__(self, filename):
         self.fp = open(filename)
@@ -73,8 +75,9 @@ class Env(object):
 
     def setdefault(self):
         for key, value in self.environment.items():
-            os.environ.setdefault(key, val)
+            os.environ.setdefault(key, value)
 
 def setdefault(filename):
     config_file = ConfigFile(filename)
     environment = Env(config_file.config)
+    environment.setdefault()
