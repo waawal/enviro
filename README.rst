@@ -32,8 +32,6 @@ Populating your Default Environment
 
 ....
 
-.. image:: http://i.imgur.com/Bp9pZ4k.jpg
-
 .. code:: python
 
     import os
@@ -71,4 +69,6 @@ License
 -------
 
 GPL v.2
+
+.. image:: http://i.imgur.com/Bp9pZ4k.jpg
 
