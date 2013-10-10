@@ -33,23 +33,25 @@ class ConfigFileWrapper(object):
 
 class ConfigFile(object):
 
-    def __init__(self, filename):
+    def __init__(self, filename, custom_path=None):
         self.filename = filename
-        self.locations = (os.getcwd(), os.path.expanduser("~"), "/etc",
-                          os.path.dirname(os.path.realpath(__main__.__file__)))
+        self.locations = [os.getcwd(), os.path.expanduser('~'), '/etc',
+                          os.path.dirname(os.path.realpath(__main__.__file__))]
+        if not custom_path is None:
+            self.locations.insert(0, custom_path)
+        self.file = None
 
     def find_file(self):
         for location in self.locations:
+            file_candidate = os.path.join(location, self.filename)
             try:
-                file_candidate = os.path.join(location, self.filename)
                 if os.access(file_candidate, os.R_OK):
-                    self.found_file = file_candidate
-                    self.file = ConfigFileWrapper(self.found_file)
-                    break
-            except (IOError, AttributeError):
+                    print file_candidate
+                    self.file_name = file_candidate
+                    self.file = ConfigFileWrapper(self.file_name)
+                    return
+            except (IOError):
                 continue
-        else:
-            self.file = None
 
     def parse_file(self):
         if self.file is None:
@@ -77,7 +79,7 @@ class Env(object):
         for key, value in self.environment.items():
             os.environ.setdefault(key, value)
 
-def setdefault(filename):
-    config_file = ConfigFile(filename)
+def setdefault(filename, custom_path=None):
+    config_file = ConfigFile(filename, custom_path)
     environment = Env(config_file.config)
     environment.setdefault()
