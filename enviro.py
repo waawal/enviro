@@ -31,12 +31,18 @@ class ConfigFileWrapper(object):
         for line in self.readline():
             yield line
 
-class ConfigFile(object):
+class Environment(object):
+    """ Traverse the paths in LOCATIONS in your quest for the filename.
+    load() is the high level method.
+    """
+
+    LOCATIONS = [os.getcwd(), os.path.expanduser('~'), '/etc',
+                 os.path.dirname(os.path.realpath(__main__.__file__))]
+
 
     def __init__(self, filename, custom_path=None):
         self.filename = filename
-        self.locations = [os.getcwd(), os.path.expanduser('~'), '/etc',
-                          os.path.dirname(os.path.realpath(__main__.__file__))]
+        self.locations = list(self.LOCATIONS)
         if not custom_path is None:
             self.locations.insert(0, custom_path)
         self.file = None
@@ -55,31 +61,25 @@ class ConfigFile(object):
 
     def parse_file(self):
         if self.file is None:
-            self.config = {}
+            self.env = {}
         else:
             config = configparser.SafeConfigParser()
             if not PY3:
                 config.readfp(self.file, self.filename)
             else:
                 config.read_file(self.file, self.filename)
-            self._config = dict(config.items('default-section'))
-
-    @property
-    def config(self):
-        self.find_file()
-        self.parse_file()
-        return self._config
-
-class Env(object):
-
-    def __init__(self, environment):
-        self.environment = environment
+            self.env = dict(config.items('default-section'))
 
     def setdefault(self):
-        for key, value in self.environment.items():
+        for key, value in self.env.items():
             os.environ.setdefault(key, value)
 
+    def load(self):
+        self.find_file()
+        self.parse_file()
+        self.setdefault()
+        return self
+
 def setdefault(filename, custom_path=None):
-    config_file = ConfigFile(filename, custom_path)
-    environment = Env(config_file.config)
-    environment.setdefault()
+    environment = Environment(filename, custom_path)
+    return environment.load()
