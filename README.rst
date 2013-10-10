@@ -41,6 +41,8 @@ Populating your Default Environment
     os.environ['foodir']
     # Will give you 'frob/whatever' based on the example config below.
 
+....
+
 If ``foodir`` was already defined in the environment, `enviro` would not have overwritten it.
 
 Configuration File Format
