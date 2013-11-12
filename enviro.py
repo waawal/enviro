@@ -1,4 +1,11 @@
+"""This is the enviro module, you can install it via pypi or simply
+drop this file on your pythonpath.
+
+"""
+
+
 from __future__ import generators
+
 import __main__
 
 import os
@@ -11,8 +18,10 @@ except ImportError:
 
 
 class ConfigFileWrapper(object):
-    """ Since ConfigParser doesn't work with files without sections
-    we have to create a "ghost section". """
+    """Since ConfigParser doesn't work with files without sections
+    we have to create a "ghost section".
+
+    """
 
     def __init__(self, filename):
         self.fp = open(filename)
@@ -32,8 +41,9 @@ class ConfigFileWrapper(object):
             yield line
 
 class Environment(object):
-    """ Traverse the paths in LOCATIONS in your quest for the filename.
+    """Traverse the paths in LOCATIONS in your quest for the filename.
     load() is the high level method.
+    
     """
 
     LOCATIONS = [os.getcwd(), os.path.expanduser('~'), '/etc',
@@ -81,5 +91,9 @@ class Environment(object):
         return self
 
 def setdefault(filename, custom_path=None):
+    """Loads a file and sets the setdefault of the environment dict
+    to the key-value pairs it finds in the file.
+
+    """
     environment = Environment(filename, custom_path)
     return environment.load()
